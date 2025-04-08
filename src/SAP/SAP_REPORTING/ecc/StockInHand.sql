@@ -55,30 +55,6 @@ FROM
 WHERE Qty IS NOT NULL AND mska.MANDT = '{{ mandt }}'
 UNION ALL
 SELECT
-  msfd.MANDT AS Client_MANDT,
-  msfd.MATNR AS ArticleNumber_MATNR,
-  msfd.WERKS AS Site_WERKS,
-  NULL AS StorageLocation_LGORT,
-  CAST(msfd.CHARG AS STRING) AS BatchNumber_CHARG,
-  msfd.SOBKZ AS SpecialStockIndicator_SOBKZ,
-  msfd.VBELN AS SDDocumentNumber_VBELN,
-  msfd.POSNR AS SDDocumentItemNumber_POSNR,
-  msfd.LIFNR AS VendorAccountNumber_LIFNR,
-  NULL AS CustomerNumber_KUNNR,
-  SPLIT(Qty, '@') [OFFSET(0)] AS Qty,
-  SPLIT(Qty, '@') [OFFSET(1)] AS StockType
-FROM
-  `{{ project_id_src }}.{{ dataset_cdc_processed_ecc }}.msfd` AS msfd,
-  UNNEST(
-    [
-      FDLAB || '@A-Unrestricted use',
-      FDINS || '@B-Quality inspection',
-      FDEIN || '@E-Stock of All Restricted Batches'
-    ]
-  ) AS Qty
-WHERE Qty IS NOT NULL AND msfd.MANDT = '{{ mandt }}'
-UNION ALL
-SELECT
   mslb.MANDT AS Client_MANDT,
   mslb.MATNR AS ArticleNumber_MATNR,
   mslb.WERKS AS Site_WERKS,

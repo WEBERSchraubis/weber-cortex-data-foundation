@@ -54,7 +54,7 @@ data_to_replicate:
   - base_table: konv
     load_frequency: "@daily"
     partition_details: {
-      column: "kdatu", partition_type: "time", time_grain: "month"
+      column: "kdatu", partition_type: "time", time_grain: "day"
     }
     cluster_details: {columns: ["stunr"]}
   - base_table: mseg
@@ -65,6 +65,8 @@ data_to_replicate:
     load_frequency: "@hourly"
   - base_table: vbup
     load_frequency: "@hourly"
+  - base_table: msfd
+    load_frequency: "@weekly"
   - base_table: fagl_011pc
     load_frequency: "@monthly"
   - base_table: fagl_011qt
@@ -81,7 +83,7 @@ data_to_replicate:
   - base_table: bkpf
     load_frequency: "@hourly"
     partition_details: {
-      column: "budat", partition_type: "time", time_grain: "month"
+      column: "budat", partition_type: "time", time_grain: "day"
     }
     cluster_details: {columns: ["bukrs", "gjahr"]}
   - base_table: afko
@@ -93,6 +95,10 @@ data_to_replicate:
   - base_table: bseg
     load_frequency: "@hourly"
     cluster_details: {columns: ["mandt", "bukrs", "gjahr"]}
+  - base_table: but000
+    load_frequency: "@daily"
+  - base_table: but020
+    load_frequency: "@daily"
   - base_table: cepc
     load_frequency: "@daily"
   - base_table: cepct
@@ -104,7 +110,7 @@ data_to_replicate:
   - base_table: ekbe
     load_frequency: "@hourly"
     partition_details: {
-      column: "budat", partition_type: "time", time_grain: "month"
+      column: "budat", partition_type: "time", time_grain: "day"
     }
     cluster_details: {columns: ["mandt", "vgabe", "ebeln", "bwart"]}
   - base_table: ekes
@@ -112,7 +118,7 @@ data_to_replicate:
   - base_table: eket
     load_frequency: "@hourly"
     partition_details: {
-      column: "eindt", partition_type: "time", time_grain: "month"
+      column: "eindt", partition_type: "time", time_grain: "day"
     }
     cluster_details: {columns: ["mandt", "ebeln"]}
   - base_table: ekkn
@@ -120,13 +126,13 @@ data_to_replicate:
   - base_table: ekko
     load_frequency: "@hourly"
     partition_details: {
-      column: "bedat", partition_type: "time", time_grain: "month"
+      column: "bedat", partition_type: "time", time_grain: "day"
     }
     cluster_details: {columns: ["mandt", "ebeln"]}
   - base_table: ekpo
     load_frequency: "@hourly"
     partition_details: {
-      column: "aedat", partition_type: "time", time_grain: "month"
+      column: "aedat", partition_type: "time", time_grain: "day"
     }
     cluster_details: {columns: ["mandt", "ebeln"]}
   - base_table: jest
@@ -280,7 +286,7 @@ data_to_replicate:
   - base_table: vbak
     load_frequency: "@hourly"
     partition_details: {
-      column: "audat", partition_type: "time", time_grain: "month"
+      column: "audat", partition_type: "time", time_grain: "day"
     }
     cluster_details: {columns: ["vkorg"]}
   - base_table: vbap
