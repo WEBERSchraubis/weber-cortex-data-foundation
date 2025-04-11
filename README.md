@@ -45,6 +45,17 @@ of them.
 **Note**: If you want to know more about which entities are covered in each data source, see the
 Entity-Relationship Diagrams (ERD) in the [docs](https://github.com/GoogleCloudPlatform/cortex-data-foundation/tree/main/docs) folder.
 
+# WEBER Specific Settings
+
+The current configuration is adapted for the production environment. The following tables have been identified as empty and have been removed from all configurations:
+
+- BUT000
+- BUT020
+- MSFD
+- MKOL
+
+These tables have been removed from all configuration files, and their components in the SQL reporting scripts have been manually removed to ensure proper functionality.
+
 # Deployment
 
 For Cortex Framework deployment instructions, see the following:

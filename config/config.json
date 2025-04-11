@@ -56,17 +56,17 @@
     "SAP": {
         "deployCDC": true,
         "SQLFlavor": "ecc",
-        "mandt": "110",
+        "mandt": "010",
         "languages": [
-            "E",
-            "D"
+            "D",
+            "E"
         ],
         "currencies": [
             "EUR"
         ],
         "datasets": {
             "cdc": "CORTEX_SAP_CDC",
-            "raw": "CORTEX_SAP_RAW",
+            "raw": "SAP_PROD_010",
             "ml": "CORTEX_SAP_ML_MODELS",
             "reporting": "CORTEX_SAP_REPORTING"
         }

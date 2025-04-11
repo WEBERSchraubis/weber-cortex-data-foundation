@@ -98,27 +98,3 @@ FROM
     ]
   ) AS Qty
 WHERE Qty IS NOT NULL AND msku.MANDT = '{{ mandt }}'
-UNION ALL
-SELECT
-  mkol.MANDT AS Client_MANDT,
-  mkol.MATNR AS ArticleNumber_MATNR,
-  mkol.WERKS AS Site_WERKS,
-  mkol.LGORT AS StorageLocation_LGORT,
-  CAST(mkol.CHARG AS STRING) AS BatchNumber_CHARG,
-  mkol.SOBKZ AS SpecialStockIndicator_SOBKZ,
-  NULL AS SDDocumentNumber_VBELN,
-  NULL AS SDDocumentItemNumber_POSNR,
-  mkol.LIFNR AS VendorAccountNumber_LIFNR,
-  NULL AS CustomerNumber_KUNNR,
-  SPLIT(Qty, '@') [OFFSET(0)] AS Qty,
-  SPLIT(Qty, '@') [OFFSET(1)] AS StockType
-FROM
-  `{{ project_id_src }}.{{ dataset_cdc_processed_ecc }}.mkol` AS mkol,
-  UNNEST(
-    [
-      SLABS || '@A-Unrestricted use',
-      SINSM || '@B-Quality inspection',
-      SSPEM || '@D-Blocked Stock'
-    ]
-  ) AS Qty
-WHERE Qty IS NOT NULL AND mkol.MANDT = '{{ mandt }}'

@@ -304,5 +304,3 @@ data_to_replicate:
     load_frequency: "@weekly"
   - base_table: msku
     load_frequency: "@weekly"
-  - base_table: mkol
-    load_frequency: "@weekly"
