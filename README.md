@@ -56,6 +56,12 @@ The current configuration is adapted for the production environment. The followi
 
 These tables have been removed from all configuration files, and their components in the SQL reporting scripts have been manually removed to ensure proper functionality.
 
+- For Chart of Accounts (CoA) / Kontenplan and for P&L structure FSV, WEBER-specific codes were used: 'YIKR', 'YIKH' as configured in the [financial_statement_version.sql](src/SAP/SAP_REPORTING/local_k9/fsv_hierarchy/financial_statement_version.sql) procedure call
+- In [FinancialStatement](src/SAP/SAP_REPORTING/ecc/FinancialStatement.sql), the query for BKPF was changed from "XREVERSAL IS NULL" to "XREVERSAL = ''" to enable data retrieval from BKPF.
+- To load [FinancialStatement](src/SAP/SAP_REPORTING/ecc/FinancialStatement.sql), the following refreshes / DAGs must be triggered beforehand: fiscal_date_dim, CurrencyConvUtil, CurrencyConversion, currency_conversion, financial_statement_version, financial_statement_initial_load
+- To load [BalanceSheet](src/SAP/SAP_REPORTING/ecc/BalanceSheet.sql), the following refreshes / DAGs must be triggered beforehand: fiscal_date_dim, CompaniesMD, CurrencyConversion, FinancialStatement, GLAccountsMD
+- To load [ProfitAndLoss](src/SAP/SAP_REPORTING/ecc/ProfitAndLoss.sql), the following refreshes / DAGs must be triggered beforehand: Languages_T002, fiscal_date_dim, CompaniesMD, CurrencyConversion, FinancialStatement, GLAccountsMD
+
 # Deployment
 
 For Cortex Framework deployment instructions, see the following:

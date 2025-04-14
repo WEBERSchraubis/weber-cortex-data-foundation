@@ -112,7 +112,7 @@ BEGIN
           FROM `{{ project_id_src }}.{{ dataset_cdc_processed }}.bkpf`
           WHERE mandt = '{{ mandt }}'
             --Ignoring the reversal documents
-            AND XREVERSAL IS NULL
+            AND XREVERSAL = ''
         ) AS bkpf
         ON
           bkpf.MANDT = bseg.MANDT

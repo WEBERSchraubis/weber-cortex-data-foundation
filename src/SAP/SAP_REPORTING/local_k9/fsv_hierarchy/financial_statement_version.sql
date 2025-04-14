@@ -148,7 +148,7 @@ END;
 -- based on your requirement
 CALL `{{ project_id_tgt }}.{{ dataset_reporting_tgt }}.FSVHrFlattening`(
   {% if sql_flavour == 'ecc' -%}
-    'CA01', 'FPA1' -- noqa: L048
+    'YIKR', 'YIKH' -- noqa: L048
   {% else -%}
     'YCOA', 'FPA1'
   {% endif -%}
